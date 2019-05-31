@@ -1,9 +1,17 @@
+// var host = "	m15.cloudmqtt.com";
+// var port = 32329;
+// var username = "liberato";
+// var password = "liberato";
+
 var host = "	m15.cloudmqtt.com";
-var port = 32329;
+var port = 37812;
+var username = "ruzejjkv";
+var password = "e0FRh1Ve8RhG";
+
+
+
 var usessl = true;
 var id = (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-var username = "liberato";
-var password = "liberato";
 var message, client;
 var connected = false;
 
@@ -116,7 +124,7 @@ function onConnectionLost(responseObject) {
   }
 }
 
-// called when a message arrives
+
 function onMessageArrived(message) {
   console.log("onMessageArrived: " + message.destinationName + ", " + message.payloadString);
   // logMessage(
@@ -137,7 +145,7 @@ function onMessageArrived(message) {
   const topic = message.destinationName.split("/")[1];
   placar[topic] = message.payloadString;
 
-  if(topic === 'Current_set') return;
+  
 
   
   if(topic === 'Sacador'){
@@ -148,11 +156,16 @@ function onMessageArrived(message) {
     document.getElementById("PlayerA_serveButton").src = "./img/" + (player === "A"? 'ball_on.svg': 'ball_off.svg');
   document.getElementById("PlayerB_serveButton").src = "./img/" + (player === "B"? 'ball_on.svg': 'ball_off.svg');
   
-  }else{
+  }else if(isTopicDOM(topic)){
     document.getElementById(topic).innerHTML = message.payloadString;
   }
 
   
+}
+
+function isTopicDOM(topic){
+  const topicDOM = ['Score_A','Set1_A','Set2_A','Set3_A','Score_B', 'Set1_B', 'Set2_B', 'Set3_B'];
+  return topicDOM.includes(topic);
 }
 
 function logMessage(type, ...content) {
@@ -216,4 +229,17 @@ function decreaseSet(player){
 function setCurrentSet(set){
   placar['Current_set'] = set.toString();
   sendMessage('Current_set', set.toString());
+}
+
+function reset(){
+  sendMessage('Score_A', '');
+  sendMessage('Set1_A', '');
+  sendMessage('Set2_A', '');
+  sendMessage('Set3_A', '');
+  sendMessage('Score_B', '');
+  sendMessage('Set1_B', '');
+  sendMessage('Set2_B', '');
+  sendMessage('Set3_B', '');
+  sendMessage('Current_set', '1');
+  
 }
