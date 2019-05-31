@@ -1,0 +1,82 @@
+.coluna {
+  width: 500px;
+}
+
+.scroll {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.console-text {
+  font-size: 10px;
+}
+
+.score-container {
+  margin-top: 15px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.players tr td {
+  padding: 5px;
+}
+.players td {
+  line-height: 25px;
+}
+
+.current-set {
+  width: 25px;
+  padding: 0;
+  border-radius: 7px;
+  background: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.player-container {
+  margin-top: 10px;
+  /* background-color: gray; */
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar-button {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.serve-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.serve-font {
+  font-size: 9px;
+}
+
+.header {
+  width: 100%;
+  height: 50px;
+  background-color: gray;
+  display: flex;
+  align-items: center;
+}
+
+.title-section{
+  width: 100%;
+  margin: 10px 5px 0px 5px;
+  padding: 5px;
+  font-weight: bold;
+  font-size: large;
+  background-color: gainsboro;
+}
+
+.botao{
+  margin: 3px 3px;
+  width: 4em;
+  background-color: ghostwhite;
+  border-color: gray;
+  border-width: 2px;
+}
